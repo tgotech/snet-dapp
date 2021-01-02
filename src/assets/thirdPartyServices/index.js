@@ -51,6 +51,7 @@ const SoundSpleeterService = lazy(() => import("./snet/sound_spleeter"));
 const RealTimeVoiceCloningService = lazy(() => import("./snet/real_time_voice_cloning"));
 const ColorizationService = lazy(() => import("./snet/deoldify-colorizer"));
 const FBProphetForecastService = lazy(() => import("./snet/fbprophet-forecast"));
+const GeoMeService = lazy(() => import("./tgo/geo-me"));
 
 //ADD_CONSTANTS_HERE
 
@@ -173,5 +174,11 @@ thirdPartyCustomUIComponents.addCustomUIComponent(
 );
 
 thirdPartyCustomUIComponents.addCustomUIComponent("org_id_test_praveen", "test_claims", ExampleService);
+
+thirdPartyCustomUIComponents.addCustomUIComponent(
+  "tgo",
+  "geo-me",
+  GeoMeService
+);
 
 export default thirdPartyCustomUIComponents;
