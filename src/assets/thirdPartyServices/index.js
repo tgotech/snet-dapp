@@ -175,10 +175,6 @@ thirdPartyCustomUIComponents.addCustomUIComponent(
 
 thirdPartyCustomUIComponents.addCustomUIComponent("org_id_test_praveen", "test_claims", ExampleService);
 
-thirdPartyCustomUIComponents.addCustomUIComponent(
-  "tgo",
-  "geo-me",
-  GeoMeService
-);
+thirdPartyCustomUIComponents.addCustomUIComponent("tgo", "geo-me", GeoMeService);
 
 export default thirdPartyCustomUIComponents;

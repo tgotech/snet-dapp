@@ -1,14 +1,14 @@
-// package: 
+// package:
 // file: geo-me.proto
 
 var geo_me_pb = require("./geo-me_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
-var ServiceDefinition = (function () {
+var ServiceDefinition = (function() {
   function ServiceDefinition() {}
   ServiceDefinition.serviceName = "ServiceDefinition";
   return ServiceDefinition;
-}());
+})();
 
 ServiceDefinition.geoFixMe = {
   methodName: "geoFixMe",
@@ -16,7 +16,7 @@ ServiceDefinition.geoFixMe = {
   requestStream: false,
   responseStream: false,
   requestType: geo_me_pb.GeoRequest,
-  responseType: geo_me_pb.GeolocationResult
+  responseType: geo_me_pb.GeolocationResult,
 };
 
 exports.ServiceDefinition = ServiceDefinition;
@@ -33,10 +33,10 @@ ServiceDefinitionClient.prototype.geoFixMe = function geoFixMe(requestMessage, m
   var client = grpc.unary(ServiceDefinition.geoFixMe, {
     request: requestMessage,
     host: this.serviceHost,
-    metadata: metadata,
+    metadata,
     transport: this.options.transport,
     debug: this.options.debug,
-    onEnd: function (response) {
+    onEnd(response) {
       if (callback) {
         if (response.status !== grpc.Code.OK) {
           var err = new Error(response.statusMessage);
@@ -47,15 +47,14 @@ ServiceDefinitionClient.prototype.geoFixMe = function geoFixMe(requestMessage, m
           callback(null, response.message);
         }
       }
-    }
+    },
   });
   return {
-    cancel: function () {
+    cancel() {
       callback = null;
       client.close();
-    }
+    },
   };
 };
 
 exports.ServiceDefinitionClient = ServiceDefinitionClient;
-
